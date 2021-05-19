@@ -3,13 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import parser from "html-react-parser";
 import { connect } from 'react-redux';
+import {addNewsDetail} from "../actions/news"
 
-const NewsDetail = ({detail}) => {
+const NewsDetail = ({detail,addNewsDetail}) => {
     const {newsId} = useParams()
 
     useEffect(()=>{
         axios.get(`https://nurkadyrnur.pythonanywhere.com/news/${newsId}/`).then((res)=>{
-            // setNews(res.data)
+            addNewsDetail(res.data)
         })
     },[])
 
@@ -26,4 +27,4 @@ const msp = ({detail})=>{
     return {detail}
 }
 
-export default connect(msp)(NewsDetail);
+export default connect(msp,{addNewsDetail})(NewsDetail);

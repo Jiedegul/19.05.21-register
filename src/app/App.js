@@ -8,6 +8,7 @@ import Contacts from "../components/Contacts"
 import NewsDetail from "../components/NewsDetail"
 import { connect } from 'react-redux';
 import {addNews} from '../actions/news';
+import Register from '../components/Register';
 
 
 const App = ({news,addNews}) => {
@@ -40,6 +41,9 @@ const App = ({news,addNews}) => {
                 </Route>
                 <Route path="/news/:newsId">
                     <NewsDetail/>
+                </Route>
+                <Route path="/register">
+                    <Register/>
                 </Route>
             </div>
         </div>
